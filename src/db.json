@@ -1,0 +1,49 @@
+{
+	"users": [
+		{
+			"name": "kunal",
+			"email": "$2a$10$RRVluSBI2n.P4/9BeJgywewnsdJbDbiTj5ztrvxlOpALe2fFtZR.K",
+			"password": "$2a$10$7q8lRyXlBWedYjnhV7CqNORoWEb2HDa46OEXQ.JKalq1X1jWRT/5m"
+		},
+		{
+			"name": "nidhi",
+			"email": "$2a$10$iELqdJTaQe/oAqnjSqzzFuVfVxKQo7OAjkF5hIcexwQhfrq/mBUR.",
+			"password": "$2a$10$it2Q/sg5eOtpzwS7rKlXs.0rPJOfLaECiTCdkoE12BgZtVtp910u6"
+		},
+		{
+			"name": "sanjay",
+			"email": "$2a$10$3kNrW1eCShd9KwAXdgWETOjj8Iq1O6qRF9AKuyvb5j3NAAwM3XJ7W",
+			"password": "$2a$10$XHKAuRfo5hWBSY0Mmu.KXeu5qQHnN9VxfEuKnO3zFPeTWGrPBlstK"
+		},
+		{
+			"name": "sourabh",
+			"email": "$2a$10$xTW8bjKIC1QSaQhnu3r1ceX8HQ4ojhxWCofdlvtOfrd5OmJfKPAhG",
+			"password": "$2a$10$IkCuLuaJsbX5PkUc.USynOsDrohGL8cfHKKDgkhhiFLNkYlIboTMm"
+		},
+		{
+			"name": "sahil",
+			"email": "$2a$10$E6Xg7JGF/VTr3p8QGIA4HeJmx7knbdZDyS.mscm4xvwow8HorPbmS",
+			"password": "$2a$10$uNhyGxhPB/desdWMC.rthunpnnBzyFUYIqleL8U5sbcxUOUqKtLyK"
+		},
+		{
+			"name": "sesha",
+			"email": "$2a$10$HY0X4Qk9lkLFxmRLByxztut1VqNo98ZveEacHoydeaXDw2RQhcSYG",
+			"password": "$2a$10$hBZmIVMY6NrY7tFp83m.ueZ9/HybXiXT359q2YpRXmz.rrblajlCa"
+		},
+		{
+			"name": "siva",
+			"email": "$2a$10$C0WfuFPACZvswnNBJxPHc.2sd4ahgM8TddAPgSXotGPXwOcLa5OrG",
+			"password": "$2a$10$kdRmRhqz4pBcyL4MOhqgDeI/4.iPG.qspv7ahLOmDrsF.LZPZ8eSG"
+		},
+		{
+			"name": "surendar",
+			"email": "$2a$10$Nwmqu8NRHYN5BhKj1akZmO8yMxQ5gHZUOYIs0hL4YT9u5eqMslo5O",
+			"password": "$2a$10$Bjy13nJXZU29XNTmJSXz9ehjlvchf4rVMjbMbBUCX9kmq8Kf8htse"
+		},
+		{
+			"name": "jaswin",
+			"email": "$2a$10$VW9rL5ryjlgYwuIWPd3VyOWpcKe8LLGjPdmkB5i5gVhZcFzh0gDcq",
+			"password": "$2a$10$do2CP8hyq8O47p8iE.f2ZODOROzZFmzg9UMwPafD.VTYoXYWDBwiy"
+		}
+	]
+}

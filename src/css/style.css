@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    font-family: 'Open Sans', sans-serif;
+}
+
+html{
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 4%, rgba(252,70,107,1) 100%);
+}
+
+a{
+    text-decoration: none;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex--direction{
+    flex-direction: column;
+}
+
+.box__container{
+    background-color: honeydew;
+    border-radius: 20px;
+    width: 40%;
+    min-width: 300px;
+    max-width: 400px;
+    height: 50%;
+    min-height: 350px;
+    max-height: 500px;
+    box-shadow: 0 0 20px -5px #000;
+}
+
+.container--height{
+    min-height: 450px;
+}
+.section__title{
+    font-size: 2rem;
+}
+
+.section__subtitle{
+    font-size: 1.3rem;
+}
+
+.line-separator{
+    border: 1px solid #000;
+    width: 60%;
+    margin: 1em 0 2em 0;
+}
+
+.form{
+    width: 100%;
+}
+
+.form > * {
+    display: block;
+    margin-bottom: 1.3em;
+    text-align: center;
+}
+
+.form__text{
+    width: 80%;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 12px -4px #000;
+}
+
+.form__text:hover,
+.form__text:focus{
+    box-shadow:  0 0 14px -4px #000;
+    outline: none;
+}
+
+.form__btn{
+    border: 2px solid #000;
+    padding: .35em .75em;
+    color: #fff;
+    font-weight: 700;
+    background: rgb(63,94,251);
+    cursor: pointer;
+    transition: all 250ms;
+}
+
+.form__btn:hover,
+.form__btn:focus{
+    box-shadow: 0 10px 15px -6px #000;
+    transform: translateY(-5px);
+    border: 2px solid rgba(252,70,107,1);
+    color: #000;
+}
+
+.section__link{
+    color: #000;
+}
+
+.section__link:focus,
+.section__link:hover{
+    text-decoration: underline;
+}
+
+.error{
+    width: 100%;
+    display: none;
+}
+
+.error__paragraph{
+    color: #f00;
+    font-size: 0.8rem;
+}

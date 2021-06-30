@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="../css/home.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="container flex flex--space">
+            <h1 class="main__title">Home</h1>
+            <a href="/logout" class="btn">Logout</a>
+        </div>
+    </nav>
+    <section class="collection">
+            <div class="container flex flex--direction">
+            <div class="collection__form flex flex--direction">
+            <h1 class="main__title">Change Username</h1>
+                <form class="form" action="/username" method="POST">
+                    <input type="text" name="name" placeholder="Username"/>
+                    <input type="text" name="newName" placeholder="New Username"/>
+                    <input type="password" name="password" placeholder="Password"/>
+                    <button class="btn">Update</button>
+                </form>
+            </div>
+            <div class="collection__form flex flex--direction">
+            <h1 class="main__title">Change Password</h1>
+                <form class="form" action="/password" method="POST">
+                    <input type="text" name="name" placeholder="Username"/>
+                    <input type="password" name="password" placeholder="Password" />
+                    <input type="password" name="newPassword" placeholder="New Password"/>
+                    <button class="btn">Update</button>
+                </form>
+            </div>
+            <div class="collection__form flex flex--direction">
+            <h1 class="main__title">Change Email</h1>
+                <form class="form" action="/email" method="POST">
+                    <input type="email" name="email" placeholder="Email"/>
+                    <input type="email" name="newEmail" placeholder="New Email" />
+                    <input type="password" name="password" placeholder="Password"/>
+                    <button class="btn">Update</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

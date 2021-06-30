@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body>
+    <section class="box__container flex flex--direction container--height">
+        <h1 class="section__title">Register</h1>
+        <hr class="line-separator">
+        <form action="/register" class="form flex flex--direction" method="POST">
+            <input type="text" class="form__text" name="name" placeholder="Username" required>
+            <input type="email" name="email" class="form__text" placeholder="Email" required>
+            <input type="password" name="password" class="form__text" placeholder="Password" required>
+            <button type="submit" class="form__btn">Register</button>
+        </form>
+        <hr class="line-separator">
+        <a href="/login" class="section__link">Already have an account? Login</a>
+        <div class="error flex flex--direction">
+            <hr class="line-separator">
+            <p class="section__subtitle error__paragraph">User Already Exists</p>
+        </div>
+    </section>
+</body>
+<script src="../js/register.js"></script>
+</html>
