@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const {requireAuth} = require('./auth');
-const path = require('path');
 const app = express();
 
 const pseudoDatabase = './src/db.json';
@@ -18,7 +17,7 @@ app.use(express.static(__dirname + '/src'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(cookieParser());
-// app.set("views", path.join(__dirname, "views"));
+
 
 const maxAge = 3 * 24 * 60 * 60;
 const createToken = (name) => {
@@ -36,13 +35,9 @@ app.get('/', (req, res) => {
 })
 
 app.get('/login', requireAuth, (req, res) => {
-    if (req.user){
-        res.sendFile(home);
-    }
-    else
     {res.cookie('checkUser', false);
-    // res.cookie('test', 'test');
-    res.sendFile(login);}
+    if (req.user) res.sendFile(home);
+    else res.sendFile(login);}
 });
 
 
