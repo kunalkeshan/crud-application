@@ -114,11 +114,14 @@ app.get('/register', (req, res) => {
 });
 
 app.get('/home', requireAuth, (req, res) => {
+    res.cookie('checkUser', false);
+    res.cookie('userExists', false);
     res.sendFile(home);
 })
 
 app.get('/logout', (req, res) => {
     res.cookie('checkUser', false);
+    res.cookie('userExists', false);
     res.cookie('jwt', 0, {maxAge: 1});
     res.redirect('/');
 })
