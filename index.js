@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 
 app.get('/login', requireAuth, (req, res) => {
     {res.cookie('checkUser', false);
-    if (req.user) res.sendFile(home);
+    if (req.user) res.redirect('/home');
     else res.sendFile(login);}
 });
 
