@@ -37,10 +37,18 @@
             <div class="collection__form flex flex--direction">
             <h1 class="main__title">Change Email</h1>
                 <form class="form" action="/email" method="POST">
-                    <input type="email" name="email" placeholder="Email"/>
+                    <input type="text" name="name" placeholder="Username"/>
                     <input type="email" name="newEmail" placeholder="New Email" />
                     <input type="password" name="password" placeholder="Password"/>
                     <button class="btn">Update</button>
+                </form>
+            </div>
+            <div class="collection__form flex flex--direction">
+                <h1 class="main__title">Delete User</h1>
+                <form action="/delete" method="POST" class="form">
+                    <input type="text" name="name" placeholder="Username" />
+                    <input type="password" name="password" placeholder="Password" />
+                    <button class="btn">Delete</button>
                 </form>
             </div>
         </div>

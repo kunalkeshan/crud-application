@@ -3,7 +3,7 @@ const fs = require('fs');
 const bcrypt = require('bcryptjs'); 
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
-const {requireAuth, checkUser} = require('./middleware/auth');
+const {requireAuth} = require('./middleware/auth');
 const app = express();
 
 const pseudoDatabase = './src/db.json';
@@ -123,56 +123,153 @@ app.get('/logout', (req, res) => {
     res.redirect('/login');
 })
 
-// app.post('/username', async (req, res) => {
-//     let {name, newName, password} = req.body;
-//     console.log(name, newName, password)
-//     let checkUser = false;
+app.post('/username',  async (req, res) => {
+    let {name, newName, password} = req.body;
+    let checkUser = false;
 
-//     let data = fs.readFileSync(pseudoDatabase);
-//     let db = JSON.parse(data);
+    let data = fs.readFileSync(pseudoDatabase);
+    let db = JSON.parse(data);
 
-//     let status = db.users.filter(user => {
-//         return user.name === name;
-//     })
+    let status = db.users.filter(user => {
+        return user.name === name;
+    })
 
 
-// //     async function toCheck(){ 
-// //     if(status.length > 0){
-// //         let validPass = await bcrypt.compare(password, status.password)
-// //         if(validPass){
-// //             checkUser = true;
-// //         }
-// //         else res.redirect('/home');
-// //     }
-// //     else res.redirect('/home');
-// // }
 
-//     if(checkUser) {
-//     fs.writeFile(pseudoDatabase, JSON.stringify(db, null, "\t"), (err) => {
-//         if(err) console.log(err);
-//         const token = createToken(newName);
-//         res.cookie('jwt', token, {httpOnly: true, maxAge: 1000*maxAge});
-//         res.redirect('/home');
-//     })
-//     }
+    if(status.length > 0){
+        let validPass = await bcrypt.compare(password, status[0].password)
+        if(validPass){
+            checkUser = true;
+        }
+        else res.send(`Password wrong, Please try again. <a href="/home">Go back to home</a>`);
+    }
+    else res.send(`Username wrong, Please try again. <a href="/home">Go back to home</a>`);
+
     
-// });
+
+    if(checkUser) {
+        db.users.forEach(user => {
+            if(user.name === name){
+                user.name = newName;
+            }
+        })
+    fs.writeFile(pseudoDatabase, JSON.stringify(db, null, "\t"), (err) => {
+        if(err) console.log(err);
+        const token = createToken(newName);
+        res.cookie('jwt', token, {httpOnly: true, maxAge: 1000*maxAge});
+        res.send(`Username Updated Successfully. <a href="/home">Go back to home</a>`);
+    })
+    }
+    
+});
 
 
-// app.post('/password', (req, res) => {
-//     let {name, password, newPassword} = req.body;
+app.post('/password', async (req, res) => {
+    let {name, password, newPassword} = req.body;
+    let hashPassword = await bcrypt.hash(newPassword, 10);
+    let checkUser = false;
 
-//     let data = fs.readFileSync(pseudoDatabase);
-//     let db = JSON.parse(data);
-// });
+    let data = fs.readFileSync(pseudoDatabase);
+    let db = JSON.parse(data);
+
+    let status = db.users.filter(user => {
+        return user.name === name;
+    })
+
+    if(status.length > 0){
+        let validPass = await bcrypt.compare(password, status[0].password);
+        if(validPass){
+            checkUser = true;
+        }
+        else res.send(`Password wrong, Please try again. <a href="/home">Go back to home</a>`);
+    }
+    else res.send(`Username wrong, Please try again. <a href="/home">Go back to home</a>`)
+
+    if(checkUser) {
+        db.users.forEach(user => {
+            if(user.name === name){
+                user.password = hashPassword;
+            }
+        })
+    fs.writeFile(pseudoDatabase, JSON.stringify(db, null, "\t"), (err) => {
+        if(err) console.log(err);
+        res.send(`Password Updated Successfully. <a href="/home">Go back to home</a>`);
+    })
+    }
+    
+});
 
 
-// app.post('/email', (req, res) => {
-//     let {email, newEmail, password} = req.body;
+app.post('/email', async (req, res) => {
+    let {name, newEmail, password} = req.body;
+    let hashEmail = await bcrypt.hash(newEmail, 10);
+    let checkUser = false;
 
-//     let data = fs.readFileSync(pseudoDatabase);
-//     let db = JSON.parse(data);
-// });
+    let data = fs.readFileSync(pseudoDatabase);
+    let db = JSON.parse(data);
+
+    let status = db.users.filter(user => {
+        return user.name === name;
+    })
+
+    if(status.length > 0){
+        try{
+                    let validPass = await bcrypt.compare(password, status[0].password);
+                    if(validPass){
+                        checkUser = true;
+                    }
+                    else res.send(`Password wrong, Please try again. <a href="/home">Go back to home</a>`);
+            }catch(err){
+                console.log(err);
+            }
+    }
+    else res.send(`Username wrong, Please try again. <a href="/home">Go back to home</a>`)
+
+    if(checkUser) {
+        db.users.forEach(user => {
+            if(user.name === name){
+                user.email = hashEmail;
+            }
+        })
+    fs.writeFile(pseudoDatabase, JSON.stringify(db, null, "\t"), (err) => {
+        if(err) console.log(err);
+        res.send(`Email Updated Successfully. <a href="/home">Go back to home</a>`);
+    })
+    }
+});
+
+app.post('/delete', async (req, res) => {
+    let {name, password} = req.body;
+    let checkUser = false;
+
+    let data = fs.readFileSync(pseudoDatabase);
+    let db = JSON.parse(data);
+
+    let status = db.users.filter(user => {
+        return user.name === name;
+    })
+
+    if(status.length > 0){
+        let validation = await bcrypt.compare(password, status[0].password);
+        if(validation){
+            checkUser = true;
+        }
+        else res.send(`Password wrong, Please try again. <a href="/home">Go back to home</a>`);
+    }
+    else res.send(`Username wrong, Please try again. <a href="/home">Go back to home</a>`)
+
+    
+    if(checkUser) {
+    let updatedDb = {users: []};
+    updatedDb.users = db.users.filter(user => {
+        return !user.name.includes(name);
+    })
+    fs.writeFile(pseudoDatabase, JSON.stringify(updatedDb, null, "\t"), (err) => {
+        if(err) console.log(err);
+        res.send(`User Deleted Successfully. <a href="/home">Go back to home</a>`);
+    });
+    }
+})
 
 
 // app.listen(port);

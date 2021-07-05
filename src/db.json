@@ -2,13 +2,8 @@
 	"users": [
 		{
 			"name": "kunal",
-			"email": "$2a$10$RRVluSBI2n.P4/9BeJgywewnsdJbDbiTj5ztrvxlOpALe2fFtZR.K",
-			"password": "$2a$10$7q8lRyXlBWedYjnhV7CqNORoWEb2HDa46OEXQ.JKalq1X1jWRT/5m"
-		},
-		{
-			"name": "nidhi",
-			"email": "$2a$10$iELqdJTaQe/oAqnjSqzzFuVfVxKQo7OAjkF5hIcexwQhfrq/mBUR.",
-			"password": "$2a$10$it2Q/sg5eOtpzwS7rKlXs.0rPJOfLaECiTCdkoE12BgZtVtp910u6"
+			"email": "$2a$10$eOagiVT2oCZTxIs5f4SE/epHI1RKT6SPDynOWOnVMWAtR0.GFmRAS",
+			"password": "$2a$10$4mNbXOxynMFaEVPGA4DINuZdb60q7tEHbwAFmcs2LV87ukLCgFXfS"
 		},
 		{
 			"name": "sanjay",
