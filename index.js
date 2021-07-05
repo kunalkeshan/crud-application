@@ -118,6 +118,7 @@ app.get('/home', requireAuth, (req, res) => {
 })
 
 app.get('/logout', (req, res) => {
+    res.cookie('checkUser', false);
     res.cookie('jwt', 0, {maxAge: 1});
     res.redirect('/');
 })
