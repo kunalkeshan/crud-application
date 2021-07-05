@@ -266,7 +266,7 @@ app.post('/delete', async (req, res) => {
     fs.writeFile(pseudoDatabase, JSON.stringify(updatedDb, null, "\t"), (err) => {
         if(err) console.log(err);
         res.cookie('jwt', 0, {maxAge: 1});
-        res.redirect('/login');
+        res.redirect('/');
     });
     }
 })
