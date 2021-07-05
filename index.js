@@ -3,7 +3,8 @@ const fs = require('fs');
 const bcrypt = require('bcryptjs'); 
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
-const {requireAuth} = require('./middleware/auth');
+const {requireAuth} = require('./auth');
+const path = require('path');
 const app = express();
 
 const pseudoDatabase = './src/db.json';
@@ -13,10 +14,11 @@ const home = __dirname + '/src/html/homepage.html';
 const port = 3000;
 
 //middleware
-app.use(express.static('src'));
+app.use(express.static(__dirname + '/src'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(cookieParser());
+// app.set("views", path.join(__dirname, "views"));
 
 const maxAge = 3 * 24 * 60 * 60;
 const createToken = (name) => {
@@ -27,13 +29,20 @@ const createToken = (name) => {
 
 // app.get('*', checkUser);
 
+
+
 app.get('/', (req, res) => {
-    res.end('<a href="/login">Login</a><br><a href="/register">Register</a><br><a href="/home">Home</a>');
+    res.end('<a href="/login">Login<a><br><a href="/register">Register</a><br><a href="/home">Home</a>');
 })
 
-app.get('/login', (req, res) => {
-    res.sendFile(login);
-    res.cookie('checkUser', false);
+app.get('/login', requireAuth, (req, res) => {
+    if (req.user){
+        res.sendFile(home);
+    }
+    else
+    {res.cookie('checkUser', false);
+    // res.cookie('test', 'test');
+    res.sendFile(login);}
 });
 
 
