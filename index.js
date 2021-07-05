@@ -29,15 +29,10 @@ const createToken = (name) => {
 // app.get('*', checkUser);
 
 
-
-app.get('/', (req, res) => {
-    res.end('<a href="/login">Login<a><br><a href="/register">Register</a><br><a href="/home">Home</a>');
-})
-
-app.get('/login', requireAuth, (req, res) => {
-    {res.cookie('checkUser', false);
+app.get('/', requireAuth, (req, res) => {
+    res.cookie('checkUser', false);
     if (req.user) res.redirect('/home');
-    else res.sendFile(login);}
+    else res.sendFile(login);
 });
 
 
