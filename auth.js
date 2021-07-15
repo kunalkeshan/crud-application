@@ -5,7 +5,6 @@ const login = __dirname + '/src/html/login.html';
 
 const requireAuth = (req, res, next) => {
     const token = req.cookies.jwt;
-    console.log(token);
     if(token){
         jwt.verify(token, 'just a secret', (err, decodedToken) => {
             if(err) res.redirect('/login');
