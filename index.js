@@ -116,7 +116,9 @@ app.get('/register', (req, res) => {
 app.get('/home', requireAuth, (req, res) => {
     res.cookie('checkUser', false);
     res.cookie('userExists', false);
-    res.sendFile(home);
+    const user = (JSON.stringify(req.user))
+    res.cookie("userDetails", user);
+    res.sendFile(home)
 })
 
 app.get('/logout', (req, res) => {
@@ -126,7 +128,7 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
 })
 
-app.post('/username',  async (req, res) => {
+app.post('/username',  requireAuth, async (req, res) => {
     let {name, newName, password} = req.body;
     let checkUser = false;
 
@@ -167,7 +169,7 @@ app.post('/username',  async (req, res) => {
 });
 
 
-app.post('/password', async (req, res) => {
+app.post('/password', requireAuth, async (req, res) => {
     let {name, password, newPassword} = req.body;
     let hashPassword = await bcrypt.hash(newPassword, 10);
     let checkUser = false;
@@ -203,7 +205,7 @@ app.post('/password', async (req, res) => {
 });
 
 
-app.post('/email', async (req, res) => {
+app.post('/email', requireAuth, async (req, res) => {
     let {name, newEmail, password} = req.body;
     let hashEmail = await bcrypt.hash(newEmail, 10);
     let checkUser = false;
@@ -241,7 +243,7 @@ app.post('/email', async (req, res) => {
     }
 });
 
-app.post('/delete', async (req, res) => {
+app.post('/delete', requireAuth, async (req, res) => {
     let {name, password} = req.body;
     let checkUser = false;
 

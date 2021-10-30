@@ -9,7 +9,7 @@ const requireAuth = (req, res, next) => {
         jwt.verify(token, 'just a secret', (err, decodedToken) => {
             if(err) res.redirect('/login');
             req.user = decodedToken;
-            next();
+            return next();
         })
         return;
     }
@@ -27,7 +27,7 @@ const checkUser = (req, res, next) => {
         jwt.verify(token, 'just a secret', (err, decodedToken) => {
             if(err) {
                 res.locals.user = null;
-                next();
+                return next();
             }
             else {
                 let name = db.users.filter(user => {
@@ -39,7 +39,7 @@ const checkUser = (req, res, next) => {
     }
     else {
         res.locals.user = null;
-        next();
+        return next();
     }
 }
 module.exports = {requireAuth, checkUser};
